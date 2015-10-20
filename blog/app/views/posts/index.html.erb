@@ -1,0 +1,21 @@
+<h1>Wszystkie posty z naszego bloga</h1>
+
+<table>
+  <tr>
+    <th>Autor</th>
+    <th>Tytuł</th>
+    <th>Treść</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.author %></td>
+      <td><%= post.title %></td>
+      <td><%= post.text %></td>
+      <td><%= link_to 'Edycja', edit_post_path(post.id) %></td>
+      <td><%= link_to 'Podgląd', post_path(post.id) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Nowy Post', new_post_path %>
