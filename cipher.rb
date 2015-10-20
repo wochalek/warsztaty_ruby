@@ -5,11 +5,9 @@ class Cipher
 		@splitter = sp
 	end
 
-	def perform()
-
-		tab = @sentence.split("");
+	def perform
 		tabret = []
-		tab.each do |x|
+		@sentence.split("").each do |x|
 			nr = x.ord
 			if(nr==32)
 				tabret.push(@splitter)
@@ -29,11 +27,9 @@ class Cipher
 		print "#{@sentence} => #{tabret.join}\n"
 	end
 
-	def perform2()
-
-		tab = @sentence.split("");
+	def perform2
 		tabret = []
-		tab.each do |x|
+		@sentence.split("").each do |x|
 			nr = x.ord
 			if(nr==32)
 				tabret.push(@splitter)
@@ -52,6 +48,26 @@ class Cipher
 				nr = temp+97
 			end
 			tabret.push(nr.chr)
+		end
+		print "#{@sentence} => #{tabret.join}\n"
+	end
+
+	def perform3
+		tabret = []
+		@sentence.split("").each do |x|
+			if(x==" ")
+				tabret.push(@splitter)
+				next
+			end
+
+			case x
+			when "Z"
+				tabret.push("A")
+			when "z"
+				tabret.push("a")
+			else
+				tabret.push((x.ord+1).chr)
+			end
 		end
 		print "#{@sentence} => #{tabret.join}\n"
 	end
@@ -75,4 +91,14 @@ Cipher.new("KODOWANIE JEST SUPER").perform2
 Cipher.new("KODOWANIE JEST SUPER","$").perform2
 Cipher.new("AZ","#").perform2
 Cipher.new("","#").perform2
+print "duration: #{Time.now-time} s.\n"
+
+time = Time.now
+Cipher.new("kodowanie jest super").perform3
+Cipher.new("kodowanie jest super","#").perform3
+Cipher.new("az","#").perform3
+Cipher.new("KODOWANIE JEST SUPER").perform3
+Cipher.new("KODOWANIE JEST SUPER","$").perform3
+Cipher.new("AZ","#").perform3
+Cipher.new("","#").perform3
 print "duration: #{Time.now-time} s.\n"

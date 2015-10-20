@@ -13,8 +13,15 @@ b = a.collect{|x| x+1}
 print "#{b} \n"
 time_diff(time_s,Time.now())
 
+#collect
+print "\nb) map\n"
+time_s = Time.now()
+b = a.map{|x| x+1}
+print "#{b} \n"
+time_diff(time_s,Time.now())
+
 #each
-print "\nb) each\n"
+print "\nc) each\n"
 time_s = Time.now()
 b = []
 a.each do |x|
@@ -46,11 +53,7 @@ time_diff(time_s,Time.now())
 print "\nc) each\n"
 time_s = Time.now()
 b = []
-a.each do |x|
-	if(x!=nil)
-		b.push(x)
-	end
-end
+a.each do |x| b.push(x) if x end
 print "#{b} \n"
 time_diff(time_s,Time.now())
 print "---------------------------------------------------\n"
@@ -76,11 +79,7 @@ time_diff(time_s,Time.now())
 print "\nb) each\n"
 time_s = Time.now()
 b = []
-a.each do |x|
-	if(x%3==0)
-		b.push(x)
-	end
-end
+a.each do |x| b.push(x) if x%3==0 end
 print "#{b} \n"
 time_diff(time_s,Time.now())
 print "---------------------------------------------------\n"
